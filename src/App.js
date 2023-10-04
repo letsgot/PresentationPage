@@ -38,8 +38,11 @@ function App() {
       </header>
 
       <div className='main'>
+      <div className='mid-main-container'>
         <div className='input container'>
-          Input Area for something exists Here
+          <div className='title'>Title Comes here</div>
+          <div className='inputArea'>Input Area for something exists Here</div>
+        </div>
         </div>
 
 
