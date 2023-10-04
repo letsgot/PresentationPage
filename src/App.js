@@ -19,15 +19,18 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { useState } from 'react';
 
 function App() {
+
+  let check = 0;
 
   let handleClick = (e) => {
     toast("Coming soon");
   }
 
   return (
-    <div>
+    <div className='page'>
 
       <header className='head'>
         <img src={apple} onClick={handleClick}></img>
@@ -39,61 +42,80 @@ function App() {
           Input Area for something exists Here
         </div>
 
+
         <form>
-          <label>Email :- 
+          <label>Email :-
             <input placeholder='Enter your email' type="text" />
           </label>
           <button>Subscribe</button>
         </form>
-
-        <div className='container'>
-          <img src={person}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='left-main-container'>
+          <div className='container'>
+            <img src={person}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={botez}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='right-main-container'>
+          <div className='container'>
+            <img src={botez}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
+        </div>
+        <div className='left-main-container'>
+          <div className='container'>
+            <img src={daca}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={daca}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='right-main-container'>
+          <div className='container'>
+            <img src={fashion}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={fashion}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='left-main-container'>
+          <div className='container'>
+            <img src={food}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={food}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='right-main-container'>
+          <div className='container'>
+            <img src={portret}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={portret}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='left-main-container'>
+          <div className='container'>
+            <img src={newoborn}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={newoborn}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='right-main-container'>
+          <div className='container'>
+            <img src={produs}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={produs}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='left-main-container'>
+          <div className='container'>
+            <img src={studio}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
 
-        <div className='container'>
-          <img src={studio}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
-        </div>
-
-        <div className='container'>
-          <img src={wedding}></img>
-          <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+        <div className='right-main-container'>
+          <div className='container'>
+            <img src={wedding}></img>
+            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+          </div>
         </div>
       </div>
 
