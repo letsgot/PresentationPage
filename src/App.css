@@ -1,18 +1,20 @@
-.page{
+.page {
   background-color: #435B66;
   color: white;
 }
 
-body{
+body {
   padding: 0;
   margin: 0;
 }
 
 .head {
-  position: fixed; /*  Set the navbar to fixed position*/
-  top: 0; /* Position the navbar at the top of the page */
+  position: fixed;
+  /*  Set the navbar to fixed position*/
+  top: 0;
+  /* Position the navbar at the top of the page */
   overflow: hidden;
-  background-color:#ceebdf;
+  background-color: #ceebdf;
   width: 100%;
   height: 100px;
   display: flex;
@@ -22,26 +24,26 @@ body{
   justify-content: space-around;
 }
 
-.head>img{
+.head>img {
   cursor: pointer;
   width: 95px;
   transition: all 0.3s ease-in-out 0s;
 }
 
 .head>img:hover {
-  transform: rotate(360deg);  
+  transform: rotate(360deg);
 }
 
 
 
 
 
-.main{
+.main {
   padding: 100px;
   margin-top: 100px;
 }
 
-form{
+form {
   /* width: 500px; */
   height: 100px;
   display: flex;
@@ -50,7 +52,7 @@ form{
   align-items: center;
 }
 
-form>label>input{
+form>label>input {
   background-color: #435B66;
   color: white;
   /* border: none; */
@@ -64,33 +66,41 @@ form>label>input{
   border-radius: 5px;
 }
 
-form>button{
+form>button {
   height: 30px;
   width: 100px;
-  background-color: rgb(0,119,181); 
+  background-color: rgb(0, 119, 181);
   border-radius: 3px;
   border: none;
   color: white;
 }
 
-form>button:hover{
+form>button:hover {
   cursor: pointer;
   animation: wiggle 100ms infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 }
 
 @keyframes wiggle {
-  0% { transform: translate(0.7px, 0); }
-  50% { transform: translate(-0.7px, 0); }
-  100% { transform: translate(0.7px, 0); }
+  0% {
+    transform: translate(0.7px, 0);
+  }
+
+  50% {
+    transform: translate(-0.7px, 0);
+  }
+
+  100% {
+    transform: translate(0.7px, 0);
+  }
 }
 
-.littleSpace{
+.littleSpace {
   margin-top: 10px;
 }
 
 
-.left-main-container{
+.left-main-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -98,7 +108,7 @@ form>button:hover{
   color: white;
 }
 
-.right-main-container{
+.right-main-container {
   color: whitesmoke;
   display: flex;
   flex-direction: column;
@@ -106,7 +116,7 @@ form>button:hover{
   justify-content: center;
 }
 
-.mid-main-container{
+.mid-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,26 +130,34 @@ form>button:hover{
   align-items: center;
 }
 
-.subscribe{
+.subscribe {
   height: 50px;
   width: 150px;
-  background-color: rgb(0,119,181); 
+  background-color: rgb(0, 119, 181);
   border-radius: 10px;
   text-align: center;
   border: none;
   color: white;
 }
 
-.subscribe:hover{
+.subscribe:hover {
   cursor: pointer;
   animation: wiggle 100ms infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 }
 
 @keyframes wiggle {
-  0% { transform: translate(0.7px, 0); }
-  50% { transform: translate(-0.7px, 0); }
-  100% { transform: translate(0.7px, 0); }
+  0% {
+    transform: translate(0.7px, 0);
+  }
+
+  50% {
+    transform: translate(-0.7px, 0);
+  }
+
+  100% {
+    transform: translate(0.7px, 0);
+  }
 }
 
 
@@ -152,50 +170,66 @@ form>button:hover{
 
 
 
-.container{
+.container {
   margin-top: 20px;
   width: 700px;
   display: flex;
   height: 200px;
   animation: pul 3s infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 }
 
 @keyframes pul {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.011);}
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.011);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 
 
 
 
-.container>img{
+.container>img {
   width: 200px;
   height: 200px;
 }
 
-.desc{
+.desc {
   margin-left: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.input{
+.input {
   height: 300px;
   display: flex;
   flex-direction: column;
   text-align: center;
   animation: pulse 5s infinite;
-  animation-timing-function: linear;   
+  animation-timing-function: linear;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08);}
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 
@@ -207,7 +241,7 @@ form>button:hover{
   font-weight: bold;
 }
 
-.inputArea{
+.inputArea {
   padding: 5px;
   font-size: 16px;
 }
@@ -222,10 +256,10 @@ form>button:hover{
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color:#e2f9ef;
+  background-color: #e2f9ef;
   margin-top: 20px;
   width: 100%;
-  height:80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -233,27 +267,27 @@ form>button:hover{
 }
 
 
-.telegram{
-  color: rgb(49,168,224);
+.telegram {
+  color: rgb(49, 168, 224);
 }
 
-.telegram:hover{
-  color: rgb(49,168,224);
+.telegram:hover {
+  color: rgb(49, 168, 224);
 }
 
-.linkedin{
-  color: rgb(0,119,181);
+.linkedin {
+  color: rgb(0, 119, 181);
 }
 
-.facebook{
-  color: rgb(72,103,170);
+.facebook {
+  color: rgb(72, 103, 170);
 }
 
-.instagram{
+.instagram {
   color: #F60866;
 }
 
-.icons {  
+.icons {
   cursor: pointer;
   transform: scale(1.0);
   animation-name: float;
@@ -265,9 +299,17 @@ form>button:hover{
 }
 
 @keyframes float {
-  0% { transform: translate(0,  0px); }
-  50%  { transform: translate(0, 15px); }
-  100%   { transform: translate(0, -0px); }   
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  50% {
+    transform: translate(0, 5px);
+  }
+
+  100% {
+    transform: translate(0, -0px);
+  }
 }
 
 .icons:hover {
@@ -280,23 +322,28 @@ form>button:hover{
   0% {
     transform: rotate(0);
   }
+
   100% {
     transform: rotate(-360deg);
   }
 }
 
+.spaceBtwFooterAndMain {
+  height: 20px;
+}
 
 
-@media screen and (max-width: 1000px){
-  .head>img{
+
+@media screen and (max-width: 1000px) {
+  .head>img {
     width: 90px;
   }
-  
-  .main{
+
+  .main {
     margin-top: 12px;
   }
-  
-  .container{
+
+  .container {
     margin-top: 20px;
     width: 600px;
     display: flex;
@@ -306,56 +353,57 @@ form>button:hover{
     justify-content: center;
     font-size: 16px;
   }
-  
-  .container>img{
+
+  .container>img {
     width: 200px;
     height: 200px;
   }
 
-  
-  
-  .desc{
+
+
+  .desc {
     margin-left: 20px;
-    
+
   }
 
-  
-.input{
-  height: 350px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+
+  .input {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title {
+    height: 90px;
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  .inputArea {
+    padding: 5px;
+    font-size: 16px;
+  }
+
 }
 
-.title {
-  height: 90px;
-  font-size: 38px;
-  font-weight: bold;
-}
-
-.inputArea{
-  padding: 5px;
-  font-size: 16px;
-}
-
-}
 
 
 
-
-@media screen and (max-width: 780px){
-  .main{
+@media screen and (max-width: 780px) {
+  .main {
     padding: 50px;
   }
-  .head>img{
+
+  .head>img {
     width: 90px;
   }
-  
-  .main{
+
+  .main {
     margin-top: 12px;
   }
-  
-  .container{
+
+  .container {
     /* margin-top: 20px; */
     width: 500px;
     display: flex;
@@ -365,109 +413,112 @@ form>button:hover{
     justify-content: center;
     font-size: 16px;
   }
-  
-  .container>img{
+
+  .container>img {
     width: 200px;
     height: 300px;
   }
-  
-  .desc{
+
+  .desc {
     margin-left: 20px;
-    
+
   }
 
-  
-.input{
-  height: 330px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+
+  .input {
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title {
+    height: 85px;
+
+    font-size: 34px;
+    font-weight: bold;
+  }
+
+  .inputArea {
+    padding: 5px;
+    font-size: 15px;
+  }
 }
 
-.title {
-  height: 85px;
-  
-  font-size: 34px;
-  font-weight: bold;
-}
-
-.inputArea{
-  padding: 5px;
-  font-size: 15px;
-}
-}
-
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   .head {
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
+    position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
     overflow: hidden;
-    background-color:#ceebdf;
+    background-color: #ceebdf;
     width: 100%;
     height: 80px;
     display: flex;
     align-content: center;
     justify-content: space-around;
   }
-  
-  .head>img{
+
+  .head>img {
     cursor: pointer;
     width: 85px;
   }
-  
-  .main{
-    padding: 20px;
+
+  .main {
+    padding: 15px;
     margin-top: 80px;
   }
-  
-  
-  form>label>input{
+
+
+  form>label>input {
     height: 30px;
     width: 240px;
     margin-left: 5px;
     border: 1px solid gray;
     border-radius: 3px;
   }
-  
-  form>button{
+
+  form>button {
     height: 20px;
     width: 70px;
-    background-color: rgb(0,119,181); 
+    background-color: rgb(0, 119, 181);
     border-radius: 2px;
     border: none;
     color: white;
   }
-  
-  
-  
-  .left-main-container{
+
+
+
+  .left-main-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
   }
-  
-  .right-main-container{
+
+  .right-main-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
   }
-  
-  .container{
+
+  .container {
+    padding: 10px;
     margin-top: 50px;
-    width: 250px;
+    width: 330px;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 450px;
   }
-  
-  .container>img{
-    width: 200px;
-    height: 200px;
+
+  .container>img {
+    width: 300px;
+    height: 300px;
   }
-  
-  .desc{
+
+  .desc {
     /* margin-left: 10px; */
     margin-top: 15px;
     display: flex;
@@ -476,57 +527,100 @@ form>button:hover{
     font-size: 14px;
   }
 
-  
-.input{
-  height: 330px;
-  width: 250px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
 
-.title {
-  height: 90px;
-  width: 250px;
-  font-size: 24px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .input {
+    height: 500px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 
-.inputArea{
-  padding: 5px;
-  height: 240px;
-  font-size: 16px;
-}
-  
+  .left-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .right-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .title {
+    height: 90px;
+    width: 250px;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inputArea {
+    padding: 5px;
+    height: 410px;
+    font-size: 16px;
+  }
+
+
+  .emailSpace {
+    margin-top: 35px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .subscribe {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(0, 119, 181);
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    color: white;
+  }
+
+
   /* footer  */
   .footer {
     /* position: fixed; */
-    background-color:#ceebdf;
-    margin-top: 20px;
+    left: 0;
+    bottom: 0;
+    background-color: #ceebdf;
+    margin-top: 15px;
     width: 100%;
-    height: 200px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     /* background-color: aliceblue; */
   }
-  
 
-  .icons {  
+
+  .icons {
     cursor: pointer;
     font-size: 40px;
     transform: scale(1);
     /* box-shadow: 0 0 0 0 rgba(#090a0a, .5); */
   }
-  
-  
+
+
+  .spaceBtwFooterAndMain {
+    height: 100px;
+  }
+
+
   .icons:hover {
     transform: scale(1.5);
   }
-  
-  
-}
 
+
+}

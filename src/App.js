@@ -154,6 +154,8 @@ function App() {
         </div>
       </div>
 
+      <div className='spaceBtwFooterAndMain'></div>
+
       <footer className='footer'>
         <TelegramIcon className='telegram icons'></TelegramIcon>
         <LinkedInIcon className='linkedin icons'></LinkedInIcon>
