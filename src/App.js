@@ -15,6 +15,7 @@ import studio from './images/presentations/STUDIO.jpg'
 import wedding from './images/presentations/WEDDING.jpg'
 import newoborn from './images/presentations/NEWOBORN.jpg'
 
+import Modal from '@material-ui/core/Modal';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -23,36 +24,67 @@ import { useState } from 'react';
 
 function App() {
 
-  let check = 0;
+  const [open, setOpen] = useState(false);
 
   let handleClick = (e) => {
     toast("Coming soon");
   }
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <div className='page'>
 
       <header className='head'>
-        <img src={apple} onClick={handleClick}></img>
-        <img src={google} onClick={handleClick}></img>
+        <img className='floating' src={apple} onClick={handleClick}></img>
+        <img className='floating' src={google} onClick={handleClick}></img>
       </header>
 
       <div className='main'>
-      <div className='mid-main-container'>
-        <div className='input container'>
-          <div className='title'>Title Comes here</div>
-          <div className='inputArea'>Input Area for something exists Here</div>
-        </div>
+        <div className='mid-main-container'>
+          <div className='input container'>
+            <div className='title'>Title Comes here</div>
+            <div className='inputArea'>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</div>
+          </div>
         </div>
 
 
-        <form>
-          <label>Email :-
-            <input placeholder='Enter your email' type="text" />
-          </label>
-          <button>Subscribe</button>
-        </form>
-        <div className='left-main-container'>
+        <div className='emailSpace'>
+            <button className='subscribe' type="button"
+              onClick={handleOpen}>
+              Click Me to Subscribe
+            </button>
+        </div>
+
+        <Modal
+          onClose={handleClose}
+          open={open}
+          style={{
+            position: 'absolute',
+            // border: '2px solid #000',
+            backgroundColor: '#435B66',
+            boxShadow: '2px solid black',
+            height: 300,
+            width: 500,
+            margin: 'auto',
+            color : 'white'
+          }}
+        >
+          <form>
+            <label>Email :-
+              <input placeholder='Enter your email' type="text" />
+            </label>
+            <button>Subscribe</button>
+          </form>
+        </Modal>
+
+        <div className='littleSpace left-main-container'>
           <div className='container'>
             <img src={person}></img>
             <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
