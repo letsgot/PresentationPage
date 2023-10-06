@@ -20,11 +20,32 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import LeftArrow from '@mui/icons-material/KeyboardArrowLeft';
+import RightArrow from '@mui/icons-material/KeyboardArrowRight';
+// import { Carousel } from "react-responsive-carousel";
+import Carousel from 'react-bootstrap/Carousel';
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState } from 'react';
 
 function App() {
 
   const [open, setOpen] = useState(false);
+  let [currVal, setCurrVal] = useState(1);
+  let [selectedLang, setSelectedLang] = useState("English");
+
+  let descriptionInEnglish = `We are launching an essential project for all those looking for a photographer.
+  A platform where you will find the ideal photographer according to the category and your needs.
+  For example, if you are a company specialized in car sales, here you will find several photographers specialized in cars.
+  If you want a simple portrait session, you will find photographers at favorable prices who specialize in portrait photography.
+  Weddings, Baptisms, Product photography and many other categories await you in this application.
+  Available on Appstore and Googleplay.`
+
+  let descriptionInRomanian = `Punem in derulare un proiectcesential pentru toti cei care cauta fotograf.
+  O platforma unde veti gasi fotograful ideal in functie de categorie si necesitatile dumneavoastra.
+  De exemplu daca sunteti companie specializata in vanzare auto aici veti gasi mai multi fotografi specializati pe auto.
+  Daca doriti o simpla sedinta de portret, veti gasi fotografi la preturi avantajoase specializati in fotografia de portret.
+  Nunti, Botezuri, Fotografia de produs si multe alte categorii va asteapta in aceasta aplicatie.
+  Disponibila pe Appstore si Googleplay.`
 
   let handleClick = (e) => {
     toast("Coming soon");
@@ -38,28 +59,48 @@ function App() {
     setOpen(true);
   };
 
+  let handleOnchange = (e) => {
+    //  console.log(e.target.value);
+    setSelectedLang(e.target.value + "");
+  }
+
+
+  let handleLeftButton = () => {
+    setCurrVal(currVal - 1);
+  }
+
+  let handleRightButton = () => {
+    setCurrVal(currVal + 1);
+  }
+
   return (
     <div className='page'>
 
       <header className='head'>
         <img className='floating' src={apple} onClick={handleClick}></img>
+        <div className='hspace'></div>
         <img className='floating' src={google} onClick={handleClick}></img>
+        <div className='hspace'></div>
+        <select name="languages" onChange={(e) => handleOnchange(e)}>
+          <option value={"English"}>English</option>
+          <option value={"Romanian"} >Romanian</option>
+        </select>
       </header>
 
       <div className='main'>
         <div className='mid-main-container'>
           <div className='input container'>
             <div className='title'>Title Comes here</div>
-            <div className='inputArea'>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</div>
+            <div className='inputArea'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
           </div>
         </div>
 
 
         <div className='emailSpace'>
-            <button className='subscribe' type="button"
-              onClick={handleOpen}>
-              Click Me to Subscribe
-            </button>
+          <button className='subscribe' type="button"
+            onClick={handleOpen}>
+            Click Me to Subscribe
+          </button>
         </div>
 
         <Modal
@@ -73,7 +114,7 @@ function App() {
             height: 300,
             width: 500,
             margin: 'auto',
-            color : 'white'
+            color: 'white'
           }}
         >
           <form>
@@ -84,82 +125,179 @@ function App() {
           </form>
         </Modal>
 
-        <div className='littleSpace left-main-container'>
+
+        <div className='category'>
+          { currVal==1?<div className='container'>
+            <img src={newoborn}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==2?<div className='container'>
+            <img src={food}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==3?<div className='container'>
+            <img src={fashion}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==4?<div className='container'>
+            <img src={botez}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+
+          {currVal==5?<div className='container'>
+            <img src={portret}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==6?<div className='container'>
+            <img src={wedding}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==7?<div className='container'>
+            <img src={produs}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+          {currVal==8?<div className='container'>
+            <img src={studio}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+
+          {currVal==9?<div className='container'>
+            <img className='person' src={person}></img>
+            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+          </div>:null}
+
+          <div className='bottomContainer'>
+            {currVal == 1 ? null :
+              <>
+                <div className='left leftside' onClick={handleLeftButton}>
+                  <LeftArrow className='btn'></LeftArrow>
+                </div>
+                <div className='rspace' ></div>
+                <div className='prevNumber leftside number' onClick={handleLeftButton}>{
+                  currVal - 1
+                }</div>
+              </>
+            }
+            <div className='rspace'></div>
+            <div className='currNumber number'>{
+              currVal
+            }</div>
+            <div className='rspace'></div>
+            {currVal == 9 ? null :
+            <>
+            <div className='nextNumber number' onClick={handleRightButton}>{
+              currVal + 1
+            }</div>
+            <div className='rspace'></div>
+            <div className='left' onClick={handleRightButton}>
+              <RightArrow className='btn'></RightArrow>
+            </div>
+            </>
+}
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        {/* 
+
+        */}
+
+
+
+
+
+
+
+
+
+
+        {/* <div className='littleSpace left-main-container'>
           <div className='container'>
             <img src={person}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='right-main-container'>
           <div className='container'>
             <img src={botez}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
         <div className='left-main-container'>
           <div className='container'>
             <img src={daca}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='right-main-container'>
           <div className='container'>
             <img src={fashion}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='left-main-container'>
           <div className='container'>
             <img src={food}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='right-main-container'>
           <div className='container'>
             <img src={portret}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='left-main-container'>
           <div className='container'>
             <img src={newoborn}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='right-main-container'>
           <div className='container'>
             <img src={produs}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='left-main-container'>
           <div className='container'>
             <img src={studio}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
         </div>
 
         <div className='right-main-container'>
           <div className='container'>
             <img src={wedding}></img>
-            <div className='desc'>Kindly read my answer again. I'm advising to place the images in public folder, as it you won't have to import the images one by one that way. Here's a working CodeSandBox that I made for your use case. Kindly note that you also have to append the extension of the image, which I do not see in your comment. Check out the data.js file to get a clarity of what I mean by that.</div>
+            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className='spaceBtwFooterAndMain'></div>
 
+
+
       <footer className='footer'>
         <TelegramIcon className='telegram icons'></TelegramIcon>
+        <div className='fspace'></div>
         <LinkedInIcon className='linkedin icons'></LinkedInIcon>
+        <div className='fspace'></div>
         <FacebookIcon className='facebook icons'></FacebookIcon>
+        <div className='fspace'></div>
         <InstagramIcon className='instagram icons'></InstagramIcon>
       </footer>
       <ToastContainer />
