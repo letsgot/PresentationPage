@@ -2,6 +2,8 @@ import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import usa from './images/united-states.png'
+import romania from './images/romania.png'
 import apple from './images/appleStore.png'
 import google from './images/GooglePlaystore.png'
 import person from './images/presentations/PERSON.jpg'
@@ -81,10 +83,12 @@ function App() {
         <div className='hspace'></div>
         <img className='floating' src={google} onClick={handleClick}></img>
         <div className='hspace'></div>
+        {selectedLang === "English" ?  <img className='country' src={usa}></img> : <img className='country' src={romania}></img>} 
         <select name="languages" onChange={(e) => handleOnchange(e)}>
           <option value={"English"}>English</option>
           <option value={"Romanian"} >Romanian</option>
         </select>
+        {/* <div className='hspace'></div> */}
       </header>
 
       <div className='main'>
