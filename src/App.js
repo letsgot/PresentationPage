@@ -269,7 +269,6 @@ const App = () => {
                <img src={frame} className='outerImage'></img>
                <img src={source[currVal]["src"]} className='innerImage'></img> 
              </div>
-    
           }
 
           <div className='bottomContainer'>
