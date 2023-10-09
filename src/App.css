@@ -10,9 +10,7 @@ body {
 
 .head {
   position: fixed;
-  /*  Set the navbar to fixed position*/
   top: 0;
-  /* Position the navbar at the top of the page */
   overflow: hidden;
   background-color: #ceebdf;
   width: 100%;
@@ -100,7 +98,6 @@ form>label>input {
   margin-left: 10px;
   padding: 2px;
   padding-left: 10px;
-  /* border: 1px solid gray; */
   border-radius: 5px;
 }
 
@@ -202,7 +199,6 @@ form>button:hover {
 
 
 .container>img{
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
   height: 445px;
   width: 447px;
   max-width: 100%;
@@ -211,12 +207,10 @@ form>button:hover {
 }
 
 .desc {
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
   height: 400px;
   width: 412px;
   background-color: white;
   color: black;
-  /* margin-left: 20px; */
   padding : 20px;
   font-family: sans-serif;
   display: flex;
@@ -229,7 +223,6 @@ form>button:hover {
 
 .bottomContainer{
   margin-top: 53px;
-  /* height: 100px; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -241,7 +234,6 @@ form>button:hover {
   margin-top: -5px;
   font-weight: bolder;
   font-size: 15px;
-  /* border: 1px solid black; */
   cursor: pointer;
 }
 
@@ -306,11 +298,6 @@ form>button:hover {
   font-size: 16px;
 }
 
-
-
-
-
-/* footer  */
 .footer {
   position: fixed;
   left: 0;
@@ -323,7 +310,6 @@ form>button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: aliceblue; */
 }
 
 .fspace{
@@ -351,7 +337,6 @@ form>button:hover {
 }
 
 .icons {
-  /* margin-left: 15px; */
   cursor: pointer;
   transform: scale(1.0);
   animation-name: float;

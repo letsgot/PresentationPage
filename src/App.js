@@ -24,23 +24,71 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LeftArrow from '@mui/icons-material/KeyboardArrowLeft';
 import RightArrow from '@mui/icons-material/KeyboardArrowRight';
-// import { Carousel } from "react-responsive-carousel";
-import Carousel from 'react-bootstrap/Carousel';
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function App() {
+const App = () => {
 
   const [open, setOpen] = useState(false);
   let [currVal, setCurrVal] = useState(1);
   let [selectedLang, setSelectedLang] = useState("English");
-
-  let descriptionInEnglish = `We are launching an essential project for all those looking for a photographer.
+  const [inputText, setInputText] = useState({ aimOfProject : `We are launching an essential project for all those looking for a photographer.
   A platform where you will find the ideal photographer according to the category and your needs.
   For example, if you are a company specialized in car sales, here you will find several photographers specialized in cars.
   If you want a simple portrait session, you will find photographers at favorable prices who specialize in portrait photography.
   Weddings, Baptisms, Product photography and many other categories await you in this application.
-  Available on Appstore and Googleplay.`
+  Available on Appstore and Googleplay.`,
+  title : "Title Comes here",
+  clickToSubscribe : "Click me to subscribe"
+});
+  const [translation, setTranslation] = useState('');
+
+  useEffect(() => {
+    const translateText = async () => {
+      const sourceLang = 'en'; // Source language (English)
+      const targetLang = 'ro'; // Target language (Romanian)
+
+      try {
+        // Split the input text into chunks of 500 characters
+        const chunks = inputText.match(/.{1,500}/g);
+
+        if (!chunks) {
+          throw new Error('Input text is empty or too short.');
+        }
+
+        const translations = [];
+
+        for (const chunk of chunks) {
+          const response = await fetch(
+            `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+              chunk
+            )}&langpair=${sourceLang}|${targetLang}`,
+            {
+              method: 'GET',
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Translation failed');
+          }
+
+          const data = await response.json();
+          translations.push(data.responseData.translatedText);
+        }
+
+        // Join the translated chunks back together
+        setTranslation(translations.join(''));
+      } catch (error) {
+        console.error(error);
+        setTranslation('Translation failed');
+      }
+    };
+
+    translateText();
+
+  })
+
+
+  let descriptionInEnglish = []
 
   let descriptionInRomanian = `Punem in derulare un proiectcesential pentru toti cei care cauta fotograf.
   O platforma unde veti gasi fotograful ideal in functie de categorie si necesitatile dumneavoastra.
@@ -48,6 +96,7 @@ function App() {
   Daca doriti o simpla sedinta de portret, veti gasi fotografi la preturi avantajoase specializati in fotografia de portret.
   Nunti, Botezuri, Fotografia de produs si multe alte categorii va asteapta in aceasta aplicatie.
   Disponibila pe Appstore si Googleplay.`
+
 
   let handleClick = (e) => {
     toast("Coming soon");
@@ -61,9 +110,8 @@ function App() {
     setOpen(true);
   };
 
-  let handleOnchange = (e) => {
-    //  console.log(e.target.value);
-    setSelectedLang(e.target.value + "");
+  let handleOnchange = async (e) => {
+    setSelectedLang(e.target.value);
   }
 
 
@@ -83,19 +131,19 @@ function App() {
         <div className='hspace'></div>
         <img className='floating' src={google} onClick={handleClick}></img>
         <div className='hspace'></div>
-        {selectedLang === "English" ?  <img className='country' src={usa}></img> : <img className='country' src={romania}></img>} 
+        {selectedLang === "English" ? <img className='country' src={usa}></img> : <img className='country' src={romania}></img>}
         <select name="languages" onChange={(e) => handleOnchange(e)}>
           <option value={"English"}>English</option>
           <option value={"Romanian"} >Romanian</option>
         </select>
-        {/* <div className='hspace'></div> */}
       </header>
 
       <div className='main'>
         <div className='mid-main-container'>
           <div className='input container'>
             <div className='title'>Title Comes here</div>
-            <div className='inputArea'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
+            {console.log(translation)}
+            <div className='inputArea'>{selectedLang == "English" ? inputText : translation}</div>
           </div>
         </div>
 
@@ -131,44 +179,44 @@ function App() {
 
 
         <div className='category'>
-          { currVal==1?<div className='container'>
+          {currVal == 1 ? <div className='container'>
             <img src={newoborn}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==2?<div className='container'>
+          </div> : null}
+          {currVal == 2 ? <div className='container'>
             <img src={food}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==3?<div className='container'>
+          </div> : null}
+          {currVal == 3 ? <div className='container'>
             <img src={fashion}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==4?<div className='container'>
+          </div> : null}
+          {currVal == 4 ? <div className='container'>
             <img src={botez}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
+          </div> : null}
 
-          {currVal==5?<div className='container'>
+          {currVal == 5 ? <div className='container'>
             <img src={portret}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==6?<div className='container'>
+          </div> : null}
+          {currVal == 6 ? <div className='container'>
             <img src={wedding}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==7?<div className='container'>
+          </div> : null}
+          {currVal == 7 ? <div className='container'>
             <img src={produs}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
-          {currVal==8?<div className='container'>
+          </div> : null}
+          {currVal == 8 ? <div className='container'>
             <img src={studio}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
+          </div> : null}
 
-          {currVal==9?<div className='container'>
+          {currVal == 9 ? <div className='container'>
             <img className='person' src={person}></img>
             <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div>:null}
+          </div> : null}
 
           <div className='bottomContainer'>
             {currVal == 1 ? null :
@@ -188,16 +236,16 @@ function App() {
             }</div>
             <div className='rspace'></div>
             {currVal == 9 ? null :
-            <>
-            <div className='nextNumber number' onClick={handleRightButton}>{
-              currVal + 1
-            }</div>
-            <div className='rspace'></div>
-            <div className='left' onClick={handleRightButton}>
-              <RightArrow className='btn'></RightArrow>
-            </div>
-            </>
-}
+              <>
+                <div className='nextNumber number' onClick={handleRightButton}>{
+                  currVal + 1
+                }</div>
+                <div className='rspace'></div>
+                <div className='left' onClick={handleRightButton}>
+                  <RightArrow className='btn'></RightArrow>
+                </div>
+              </>
+            }
           </div>
 
         </div>
