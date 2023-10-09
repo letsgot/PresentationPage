@@ -3,8 +3,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import usa from './images/united-states.png'
+import frame from './images/frame.png'
 import romania from './images/romania.png'
 import apple from './images/appleStore.png'
+import fotostali from './images/fotostali.jpeg'
 import google from './images/GooglePlaystore.png'
 import person from './images/presentations/PERSON.jpg'
 import botez from './images/presentations/BOTEZ.jpg'
@@ -24,23 +26,98 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LeftArrow from '@mui/icons-material/KeyboardArrowLeft';
 import RightArrow from '@mui/icons-material/KeyboardArrowRight';
+// import { Carousel } from "react-responsive-carousel";
+import Carousel from 'react-bootstrap/Carousel';
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const App = () => {
 
   const [open, setOpen] = useState(false);
   let [currVal, setCurrVal] = useState(1);
   let [selectedLang, setSelectedLang] = useState("English");
-  const [inputText, setInputText] = useState({ aimOfProject : `We are launching an essential project for all those looking for a photographer.
+
+  const [inputText, setInputText] = useState(`We are launching an essential project for all those looking for a photographer.
   A platform where you will find the ideal photographer according to the category and your needs.
   For example, if you are a company specialized in car sales, here you will find several photographers specialized in cars.
   If you want a simple portrait session, you will find photographers at favorable prices who specialize in portrait photography.
   Weddings, Baptisms, Product photography and many other categories await you in this application.
-  Available on Appstore and Googleplay.`,
-  title : "Title Comes here",
-  clickToSubscribe : "Click me to subscribe"
-});
+  Available on Appstore and Googleplay.`);
   const [translation, setTranslation] = useState('');
+
+
+  const { t, i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState('en');
+
+
+  let source = [
+    // add new item in category 
+    // import a image from images folder
+    // add at particular index of array source
+    {
+
+    },
+    {
+      "id" : 1,
+      "src" :  newoborn,
+      "category" : "New born"
+    },
+    {
+      "id" : 2,
+      "src" : botez,
+      "category" : "Botez"
+    },
+    {
+      "id" : 3,
+      "src" : fashion,
+      "category" : "Fashion"
+    },
+    {
+      "id" : 4,
+      "src" : food,
+      "category" : "Food"
+    },
+    {
+      "id" : 5,
+      "src" : portret,
+      "category" : "Portret"
+    },
+    {
+      "id" : 6,
+      "src" : produs,
+      "category" : "Produs"
+    },
+    {
+      "id" : 7,
+      "src" : wedding,
+      "category" : "Wedding"
+    },
+    {
+      "id" : 8,
+      "src" : studio,
+      "category" : "Studio"
+    },
+    {
+      "id" : 9,
+      "src" : person,
+      "category" : "Person"
+    },
+    
+  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const translateText = async () => {
@@ -88,15 +165,6 @@ const App = () => {
   })
 
 
-  let descriptionInEnglish = []
-
-  let descriptionInRomanian = `Punem in derulare un proiectcesential pentru toti cei care cauta fotograf.
-  O platforma unde veti gasi fotograful ideal in functie de categorie si necesitatile dumneavoastra.
-  De exemplu daca sunteti companie specializata in vanzare auto aici veti gasi mai multi fotografi specializati pe auto.
-  Daca doriti o simpla sedinta de portret, veti gasi fotografi la preturi avantajoase specializati in fotografia de portret.
-  Nunti, Botezuri, Fotografia de produs si multe alte categorii va asteapta in aceasta aplicatie.
-  Disponibila pe Appstore si Googleplay.`
-
 
   let handleClick = (e) => {
     toast("Coming soon");
@@ -110,9 +178,19 @@ const App = () => {
     setOpen(true);
   };
 
-  let handleOnchange = async (e) => {
-    setSelectedLang(e.target.value);
-  }
+
+  const toggleLanguage = (e) => {
+    if (e.target.value == "English") {
+      i18n.changeLanguage('en');
+      setCurrentLanguage('en');
+    }
+    else {
+      i18n.changeLanguage('ro');
+      setCurrentLanguage('ro');
+    }
+
+  };
+
 
 
   let handleLeftButton = () => {
@@ -127,23 +205,29 @@ const App = () => {
     <div className='page'>
 
       <header className='head'>
+       
         <img className='floating' src={apple} onClick={handleClick}></img>
-        <div className='hspace'></div>
+        {/* <div className='hspace'></div> */}
+        <img className='fotostali-img' src={fotostali} onClick={handleClick}></img>
+
         <img className='floating' src={google} onClick={handleClick}></img>
-        <div className='hspace'></div>
+
+      </header>
+
+      <div className='eng-rom-div'>
         {selectedLang === "English" ? <img className='country' src={usa}></img> : <img className='country' src={romania}></img>}
-        <select name="languages" onChange={(e) => handleOnchange(e)}>
+        <select name="languages" className='headSelect' onChange={(e) => toggleLanguage(e)}>
           <option value={"English"}>English</option>
           <option value={"Romanian"} >Romanian</option>
         </select>
-      </header>
+      </div>
 
       <div className='main'>
         <div className='mid-main-container'>
           <div className='input container'>
-            <div className='title'>Title Comes here</div>
-            {console.log(translation)}
-            <div className='inputArea'>{selectedLang == "English" ? inputText : translation}</div>
+            <div className='title'>{t('welcome')}</div>
+            {/* {console.log(translation)} */}
+            <div className='inputArea'>{t('aim')}</div>
           </div>
         </div>
 
@@ -151,7 +235,7 @@ const App = () => {
         <div className='emailSpace'>
           <button className='subscribe' type="button"
             onClick={handleOpen}>
-            Click Me to Subscribe
+            {t('subscribe')}
           </button>
         </div>
 
@@ -166,177 +250,75 @@ const App = () => {
             height: 300,
             width: 500,
             margin: 'auto',
-            color: 'white'
+            color: 'white',
           }}
+          className='overlap'
         >
           <form>
             <label>Email :-
               <input placeholder='Enter your email' type="text" />
             </label>
-            <button>Subscribe</button>
+            <button>{t('subscribe')}</button>
           </form>
         </Modal>
 
 
         <div className='category'>
-          {currVal == 1 ? <div className='container'>
-            <img src={newoborn}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 2 ? <div className='container'>
-            <img src={food}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 3 ? <div className='container'>
-            <img src={fashion}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 4 ? <div className='container'>
-            <img src={botez}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-
-          {currVal == 5 ? <div className='container'>
-            <img src={portret}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 6 ? <div className='container'>
-            <img src={wedding}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 7 ? <div className='container'>
-            <img src={produs}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-          {currVal == 8 ? <div className='container'>
-            <img src={studio}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
-
-          {currVal == 9 ? <div className='container'>
-            <img className='person' src={person}></img>
-            <div className='desc'>{selectedLang === "English" ? descriptionInEnglish : descriptionInRomanian}</div>
-          </div> : null}
+          {
+             <div className='container'>
+               <img src={frame} className='outerImage'></img>
+               <img src={source[currVal]["src"]} className='innerImage'></img> 
+             </div>
+    
+          }
 
           <div className='bottomContainer'>
             {currVal == 1 ? null :
-              <>
                 <div className='left leftside' onClick={handleLeftButton}>
-                  <LeftArrow className='btn'></LeftArrow>
+                  <div className="arrowAnim">
+                    <div class="arrowSliding">
+                      <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay1">
+                      <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay2">
+                      <div class="arrow"></div>
+                    </div>
+                    <div class="arrowSliding delay3">
+                      <div class="arrow"></div>
+                    </div>
+                  </div>
                 </div>
-                <div className='rspace' ></div>
-                <div className='prevNumber leftside number' onClick={handleLeftButton}>{
-                  currVal - 1
-                }</div>
-              </>
             }
             <div className='rspace'></div>
             <div className='currNumber number'>{
-              currVal
+              source[currVal]["category"]
             }</div>
             <div className='rspace'></div>
             {currVal == 9 ? null :
-              <>
-                <div className='nextNumber number' onClick={handleRightButton}>{
-                  currVal + 1
-                }</div>
-                <div className='rspace'></div>
                 <div className='left' onClick={handleRightButton}>
-                  <RightArrow className='btn'></RightArrow>
+                  {/* <RightArrow onClick={handleClick}></RightArrow> */}
+                  <div id="arrowAnim">
+                    <div class="arrowSlidingR">
+                      <div class="arrowr"></div>
+                    </div>
+                    <div class="arrowSlidingR delay1">
+                      <div class="arrowr"></div>
+                    </div>
+                    <div class="arrowSlidingR delay2">
+                      <div class="arrowr"></div>
+                    </div>
+                    <div class="arrowSlidingR delay3">
+                      <div class="arrowr"></div>
+                    </div>
+                  </div>
                 </div>
-              </>
+              
             }
           </div>
 
         </div>
-
-
-
-
-
-
-
-        {/* 
-
-        */}
-
-
-
-
-
-
-
-
-
-
-        {/* <div className='littleSpace left-main-container'>
-          <div className='container'>
-            <img src={person}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='right-main-container'>
-          <div className='container'>
-            <img src={botez}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-        <div className='left-main-container'>
-          <div className='container'>
-            <img src={daca}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='right-main-container'>
-          <div className='container'>
-            <img src={fashion}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='left-main-container'>
-          <div className='container'>
-            <img src={food}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='right-main-container'>
-          <div className='container'>
-            <img src={portret}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='left-main-container'>
-          <div className='container'>
-            <img src={newoborn}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='right-main-container'>
-          <div className='container'>
-            <img src={produs}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='left-main-container'>
-          <div className='container'>
-            <img src={studio}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div>
-
-        <div className='right-main-container'>
-          <div className='container'>
-            <img src={wedding}></img>
-            <div className='desc'>{selectedLang==="English"?descriptionInEnglish:descriptionInRomanian}</div>
-          </div>
-        </div> */}
       </div>
 
       <div className='spaceBtwFooterAndMain'></div>
