@@ -3,7 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import usa from './images/united-states.png'
-import frame from './images/frame.png'
+import overlayBackground from './images/overlayBackground.jpg'
+import frame from './images/frame.jpg'
 import romania from './images/romania.png'
 import apple from './images/appleStore.png'
 import fotostali from './images/fotostali.jpeg'
@@ -32,6 +33,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Videoplayer from './components/Videoplayer';
+
 const App = () => {
 
   const [open, setOpen] = useState(false);
@@ -59,51 +62,51 @@ const App = () => {
 
     },
     {
-      "id" : 1,
-      "src" :  newoborn,
-      "category" : "New born"
+      "id": 1,
+      "src": newoborn,
+      "category": "New born"
     },
     {
-      "id" : 2,
-      "src" : botez,
-      "category" : "Botez"
+      "id": 2,
+      "src": botez,
+      "category": "Botez"
     },
     {
-      "id" : 3,
-      "src" : fashion,
-      "category" : "Fashion"
+      "id": 3,
+      "src": fashion,
+      "category": "Fashion"
     },
     {
-      "id" : 4,
-      "src" : food,
-      "category" : "Food"
+      "id": 4,
+      "src": food,
+      "category": "Food"
     },
     {
-      "id" : 5,
-      "src" : portret,
-      "category" : "Portret"
+      "id": 5,
+      "src": portret,
+      "category": "Portret"
     },
     {
-      "id" : 6,
-      "src" : produs,
-      "category" : "Produs"
+      "id": 6,
+      "src": produs,
+      "category": "Produs"
     },
     {
-      "id" : 7,
-      "src" : wedding,
-      "category" : "Wedding"
+      "id": 7,
+      "src": wedding,
+      "category": "Wedding"
     },
     {
-      "id" : 8,
-      "src" : studio,
-      "category" : "Studio"
+      "id": 8,
+      "src": studio,
+      "category": "Studio"
     },
     {
-      "id" : 9,
-      "src" : person,
-      "category" : "Person"
+      "id": 9,
+      "src": person,
+      "category": "Person"
     },
-    
+
   ]
 
 
@@ -164,6 +167,7 @@ const App = () => {
 
   })
 
+  
 
 
   let handleClick = (e) => {
@@ -194,18 +198,35 @@ const App = () => {
 
 
   let handleLeftButton = () => {
-    setCurrVal(currVal - 1);
+    if (currVal == 1) {
+      setCurrVal(source.length - 1);
+    }
+    else {
+      setCurrVal(currVal - 1);
+    }
   }
 
   let handleRightButton = () => {
-    setCurrVal(currVal + 1);
+    if (currVal == source.length - 1) {
+      setCurrVal(1);
+    }
+    else {
+      setCurrVal(currVal + 1);
+    }
+  }
+ 
+  let showToolTip = ()=>{
+    console.log(1);
+    setTimeout(() => {
+      document.getElementsByClassName('arrowSlidingR').click();      
+ }, 3000);
   }
 
   return (
     <div className='page'>
 
       <header className='head'>
-       
+
         <img className='floating' src={apple} onClick={handleClick}></img>
         {/* <div className='hspace'></div> */}
         <img className='fotostali-img' src={fotostali} onClick={handleClick}></img>
@@ -230,7 +251,11 @@ const App = () => {
             <div className='inputArea'>{t('aim')}</div>
           </div>
         </div>
-
+        
+        <div className='subBox'>
+        <div className='stext'>
+          {t('subscribeText')}
+        </div>
 
         <div className='emailSpace'>
           <button className='subscribe' type="button"
@@ -238,82 +263,91 @@ const App = () => {
             {t('subscribe')}
           </button>
         </div>
+        </div>
 
         <Modal
           onClose={handleClose}
           open={open}
           style={{
-            position: 'absolute',
+            position: 'fixed',
             // border: '2px solid #000',
             backgroundColor: '#435B66',
             boxShadow: '2px solid black',
-            height: 300,
-            width: 500,
+            // height: 300,
+            // width: 500,
             margin: 'auto',
             color: 'white',
           }}
           className='overlap'
         >
-          <form>
-            <label>Email :-
-              <input placeholder='Enter your email' type="text" />
-            </label>
-            <button>{t('subscribe')}</button>
-          </form>
+          <div className='innerText'>
+            <div className='overlapText'>
+              {t('subscribeText')}
+            </div>
+            <div className='line'></div>
+            <form className='formForEmail'>
+              <label>Email :-
+                <input placeholder='Enter your email' className='formForEmailInput' type="text" />
+              </label>
+              <button className='formButton'>{t('subscribe')}</button>
+            </form>
+          </div>
+
         </Modal>
 
-
+        <Videoplayer className='video'></Videoplayer>
+        
         <div className='category'>
           {
-             <div className='container'>
-               <img src={frame} className='outerImage'></img>
-               <img src={source[currVal]["src"]} className='innerImage'></img> 
-             </div>
+            <div className='container'>
+              <img src={frame} className='outerImage'></img>
+              <img src={source[currVal]["src"]} className='innerImage'></img>
+            </div>
           }
 
           <div className='bottomContainer'>
-            {currVal == 1 ? null :
-                <div className='left leftside' onClick={handleLeftButton}>
-                  <div className="arrowAnim">
-                    <div class="arrowSliding">
-                      <div class="arrow"></div>
-                    </div>
-                    <div class="arrowSliding delay1">
-                      <div class="arrow"></div>
-                    </div>
-                    <div class="arrowSliding delay2">
-                      <div class="arrow"></div>
-                    </div>
-                    <div class="arrowSliding delay3">
-                      <div class="arrow"></div>
-                    </div>
-                  </div>
+
+            <div className='left leftside' onClick={handleLeftButton}>
+              <div className="arrowAnim">
+                <div class="arrowSliding">
+                  <div class="arrow"></div>
                 </div>
-            }
+                <div class="arrowSliding delay1">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay2">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay3">
+                  <div class="arrow"></div>
+                </div>
+              </div>
+            </div>
+
             <div className='rspace'></div>
             <div className='currNumber number'>{
               source[currVal]["category"]
             }</div>
             <div className='rspace'></div>
-            {currVal == 9 ? null :
-                <div className='left' onClick={handleRightButton}>
-                  {/* <RightArrow onClick={handleClick}></RightArrow> */}
-                  <div id="arrowAnim">
-                    <div class="arrowSlidingR">
-                      <div class="arrowr"></div>
-                    </div>
-                    <div class="arrowSlidingR delay1">
-                      <div class="arrowr"></div>
-                    </div>
-                    <div class="arrowSlidingR delay2">
-                      <div class="arrowr"></div>
-                    </div>
-                    <div class="arrowSlidingR delay3">
-                      <div class="arrowr"></div>
-                    </div>
+            {
+              <div className='left' onClick={handleRightButton}>
+                {/* <RightArrow onClick={handleClick}></RightArrow> */}
+                <div id="arrowAnim">
+                  <div class="arrowSlidingR">
+                    <div class="arrowr"></div>
+                  </div>
+                  <div class="arrowSlidingR delay1">
+                    <div class="arrowr"></div>
+                  </div>
+                  <div class="arrowSlidingR delay2">
+                    <div class="arrowr"></div>
+                  </div>
+                  <div class="arrowSlidingR delay3">
+                    <div class="arrowr"></div>
                   </div>
                 </div>
-              
+              </div>
+
             }
           </div>
 

@@ -1,0 +1,34 @@
+/* CSS for larger screens (greater than or equal to 600px) */
+.videoPlayerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 1022px;
+    border: 10px solid black;
+  }
+  
+  .videoPlayer {
+    position: relative;
+    overflow: hidden;
+    /* Maintain 1:1 aspect ratio for the video player */
+    /* padding-top: 100%; */
+    width: 100%;
+  }
+
+  @media (max-width: 1000px) {
+    .videoPlayerWrapper {
+        /* padding: 50px; */
+        height: 389px;
+        width: 577px;
+    }
+  }
+  
+  /* CSS for smaller screens (less than 600px) */
+  @media (max-width: 600px) {
+    .videoPlayerWrapper {
+        height: 192px;
+        width: 340px;
+    }
+  }
+  
